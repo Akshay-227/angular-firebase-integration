@@ -29,6 +29,34 @@
             (click)="authService.SignIn(userName.value, userPassword.value)"
           />
         </div>
+        <div class="row mt-2">
+          <div (click)="singInWithGoogle()" style="text-decoration: none; cursor: pointer;">
+          <div class="card  text-center">
+            <div class="card-body shadow d-flex justify-content-center gap-2 align-items-center">
+              <img src="../../../assets/google.svg" alt="" width="30px" height="30px">
+              Sign in with Google
+            </div>
+          </div></div>
+        </div>
+        
+        <!-- <div (click)="singInWithGitHub()" style="text-decoration: none; cursor: pointer;">
+          <div class="card text-center mt-2 bg-black text-white">
+            <div class="card-body shadow d-flex justify-content-center gap-2 align-items-center">
+              <img src="../../../assets/github.png" alt="" width="30px" height="30px">
+              Sign in with GitHub
+            </div>
+          </div>
+        </div>
+        
+        
+        <div (click)="singInWithMicrosoft()" style="text-decoration: none; cursor: pointer;">
+          <div class="card text-center mt-2">
+            <div class="card-body shadow d-flex justify-content-center gap-2 align-items-center">
+              <img src="../../../assets/microsoft.png" alt="" width="30px" height="30px">
+              Sign in with Microsoft
+            </div>
+          </div>
+        </div> -->
         <div class="formGroup">
           <span class="or"><span class="orInner">Or</span></span>
         </div>

@@ -1,0 +1,92 @@
+
+<div class="overlay" *ngIf="loading">
+  <div class="loader">
+    <mat-progress-spinner diameter="50" mode="indeterminate"></mat-progress-spinner>
+  </div>
+</div>
+
+
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <div class="text-center fs-3 mb-3 fw-medium">Sign In</div> 
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Email Address or Phone Number</mat-label>        
+        <input matInput placeholder="Email Address or Phone Number"
+        [(ngModel)]="emailOrPhone"
+        required >
+      </mat-form-field>
+
+      <div class="mt-2" *ngIf="!isPhoneSignup()" >
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Password</mat-label>        
+          <input matInput
+                 type="password"
+                 placeholder="Password"
+                 [(ngModel)]="password"
+                 required />
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2" >
+        <button *ngIf="!loading" mat-raised-button style="width: 100%;"
+                color="primary"
+                [disabled]="isButtonDisabled() || disableSubmit"
+                (click)="signInOrSendOTP()">
+          {{ isPhoneSignup() ? 'Send OTP' : 'Sign In' }}
+        </button>
+      </div>
+
+      <!-- Include this div in your HTML where you want the reCAPTCHA widget to be rendered -->
+      <div id="recaptcha-container"></div>
+
+      <div class="mt-2" *ngIf="isOtpSent" >
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Enter OTP</mat-label>        
+          <input matInput
+                 type="text"
+                 id="inputOtp"
+                 [(ngModel)]="otp"
+                 required />
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2" *ngIf="isOtpSent" >
+        <button *ngIf="!loading" mat-raised-button style="width: 100%;"
+                color="primary"
+                [disabled]="disableSubmit"
+                (click)="verifyOtp()">Verify OTP
+        </button>
+      </div>
+      <div class="forgotPassword mt-2">
+        <span routerLink="/forgot-password">Forgot Password?</span>
+      </div>
+        <div class="my-2" >
+          <span class="or"><span class="orInner">Or</span></span>
+        </div>
+        <div class="d-flex justify-content-center align-items-center gap-2">
+          <div (click)="singInWithGoogle()" style="text-decoration: none; cursor: pointer;">
+            <img src="../../../assets/google.svg" alt="" width="40px" height="40px">
+          </div>
+  
+          <div (click)="singInWithGitHub()" style="text-decoration: none; cursor: pointer;">
+            <img src="../../../assets/github.png" alt="" width="30px" height="30px">
+          </div>
+        </div>
+
+
+        <!-- <div (click)="singInWithMicrosoft()" style="text-decoration: none; cursor: pointer;">
+          <div class="card text-center mt-2">
+            <div class="card-body shadow d-flex justify-content-center gap-2 align-items-center">
+              <img src="../../../assets/microsoft.png" alt="" width="30px" height="30px">
+              Sign in with Microsoft
+            </div>
+          </div>
+        </div>  -->
+       
+   
+    </div>
+    <div class="redirectToLogin">
+      <span>Don't have an account?<span class="redirect" routerLink="/register-user">
+          Sign Up</span></span>
+    </div>

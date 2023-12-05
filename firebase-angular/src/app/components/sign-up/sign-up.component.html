@@ -1,41 +1,77 @@
 <div class="displayTable">
-    <div class="displayTableCell">
-      <div class="authBlock">
-        <h3>Sign Up</h3>
-        <div class="formGroup">
-          <input
-            type="email"
-            class="formControl"
-            placeholder="Email Address"
-            #userEmail
-            required
-          />
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <div class="text-center fs-3 mb-3 fw-medium">Sign Up</div> 
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <mat-label>Email Address or Phone Number</mat-label>        
+        <input matInput placeholder="Email Address or Phone Number"
+        [(ngModel)]="emailOrPhone"
+        required >
+      </mat-form-field>
+
+      <div class="mt-2" *ngIf="!isPhoneSignup()" >
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Password</mat-label>        
+          <input matInput
+                 type="password"
+                 placeholder="Password"
+                 [(ngModel)]="password"
+                 required />
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2" >
+        <button *ngIf="!loading" mat-raised-button style="width: 100%;"
+                color="primary"
+                [disabled]="isButtonDisabled() || disableSubmit"
+                (click)="signUpOrSendOTP()">
+          {{ isPhoneSignup() ? 'Send OTP' : 'Sign Up' }}
+        </button>
+        <span *ngIf="loading">
+          <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner> Loading...
+        </span>
+      </div>
+
+      <div id="recaptcha-container"></div>
+
+      <div class="mt-2" *ngIf="isOtpSent" >
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Enter OTP</mat-label>        
+          <input matInput
+                 type="text"
+                 id="inputOtp"
+                 [(ngModel)]="otp"
+                 required />
+        </mat-form-field>
+      </div>
+
+      <div class="mt-2" *ngIf="isOtpSent" >
+        <button *ngIf="!loading" mat-raised-button style="width: 100%;"
+                color="primary"
+                [disabled]="disableSubmit"
+                (click)="verifyOtp()">Verify OTP
+        </button>
+        <span *ngIf="loading">
+          <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner> Loading...
+        </span>
+      </div>
+
+      <div class="my-2" >
+        <span class="or"><span class="orInner">Or</span></span>
+      </div>
+
+      <div class="formGroup d-flex justify-content-center align-items-center gap-2">
+        <div (click)="singInWithGoogle()" style="text-decoration: none; cursor: pointer;">
+          <img src="../../../assets/google.svg" alt="" width="40px" height="40px">
         </div>
-        <div class="formGroup">
-          <input
-            type="password"
-            class="formControl"
-            placeholder="Password"
-            #userPwd
-            required
-          />
+
+        <div (click)="singInWithGitHub()" style="text-decoration: none; cursor: pointer;">
+          <img src="../../../assets/github.png" alt="" width="30px" height="30px">
         </div>
-        <div class="formGroup">
-          <input
-            type="button"
-            class="btn btnPrimary"
-            value="Sign Up"
-            (click)="authService.SignUp(userEmail.value, userPwd.value)"
-          />
-        </div>
-        <div class="formGroup">
-          <span class="or"><span class="orInner">Or</span></span>
-        </div>
+      </div>
     </div>
     <div class="redirectToLogin">
-        <span
-          >Already have an account?
-          <span class="redirect" routerLink="/sign-in">Log In</span></span
-        >
-      </div>
+      <span>Already have an account? <span class="redirect" routerLink="/sign-in">Log In</span></span>
+    </div>
   </div>
+</div>

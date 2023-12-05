@@ -1,4 +1,5 @@
 @import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
 
 * {
   -webkit-box-sizing: border-box;
@@ -22,14 +23,6 @@ body {
   vertical-align: text-bottom;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-}
 
 .media-body h1 {
   font-weight: 300;
@@ -65,7 +58,7 @@ h6 {
   display: table;
   width: 100%;
   height: 100%;
-  background: #12056d;
+  background: #3f51b5;
 }
 
 .displayTableCell {
@@ -75,11 +68,6 @@ h6 {
   height: 100%;
 }
 
-h3 {
-  text-align: center;
-  font-size: 22px;
-  margin: 0 0 20px;
-}
 
 .authBlock {
   margin: 0 auto;
@@ -204,19 +192,17 @@ input:-moz-placeholder {
 }
 
 .forgotPassword {
-  text-align: center;
-  margin: -12px 0 15px 0;
-  float: left;
+  text-align: right;
   width: 100%;
 }
 
 .forgotPassword span {
-  color: #4dd5fe;
-  font-size: 14px;
+  text-decoration: underline;
+  font-size: 16px;
   font-weight: 400;
   cursor: pointer;
   display: inline-block;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .redirectToLogin {
@@ -661,3 +647,5 @@ body .table thead th {
     display: none;
   }
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

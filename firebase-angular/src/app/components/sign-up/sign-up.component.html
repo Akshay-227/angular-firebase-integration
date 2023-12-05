@@ -1,3 +1,11 @@
+
+
+<div class="overlay" *ngIf="loading">
+  <div class="loader">
+    <mat-progress-spinner diameter="50" mode="indeterminate"></mat-progress-spinner>
+  </div>
+</div>
+
 <div class="displayTable">
   <div class="displayTableCell">
     <div class="authBlock">
@@ -27,9 +35,6 @@
                 (click)="signUpOrSendOTP()">
           {{ isPhoneSignup() ? 'Send OTP' : 'Sign Up' }}
         </button>
-        <span *ngIf="loading">
-          <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner> Loading...
-        </span>
       </div>
 
       <div id="recaptcha-container"></div>
@@ -51,11 +56,7 @@
                 [disabled]="disableSubmit"
                 (click)="verifyOtp()">Verify OTP
         </button>
-        <span *ngIf="loading">
-          <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner> Loading...
-        </span>
       </div>
-
       <div class="my-2" >
         <span class="or"><span class="orInner">Or</span></span>
       </div>

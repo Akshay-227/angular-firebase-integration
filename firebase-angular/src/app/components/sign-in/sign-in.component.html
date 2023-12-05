@@ -1,3 +1,11 @@
+
+<div class="overlay" *ngIf="loading">
+  <div class="loader">
+    <mat-progress-spinner diameter="50" mode="indeterminate"></mat-progress-spinner>
+  </div>
+</div>
+
+
 <div class="displayTable">
   <div class="displayTableCell">
     <div class="authBlock">
@@ -27,9 +35,6 @@
                 (click)="signInOrSendOTP()">
           {{ isPhoneSignup() ? 'Send OTP' : 'Sign In' }}
         </button>
-        <span *ngIf="loading">
-          <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner> Loading...
-        </span>
       </div>
 
       <!-- Include this div in your HTML where you want the reCAPTCHA widget to be rendered -->
@@ -52,14 +57,10 @@
                 [disabled]="disableSubmit"
                 (click)="verifyOtp()">Verify OTP
         </button>
-        <span *ngIf="loading">
-          <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner> Loading...
-        </span>
       </div>
       <div class="forgotPassword mt-2">
         <span routerLink="/forgot-password">Forgot Password?</span>
       </div>
-
         <div class="my-2" >
           <span class="or"><span class="orInner">Or</span></span>
         </div>

@@ -25,7 +25,7 @@ jobs:
 
     - name: Deploy to Firebase
       if: success()
-      uses: w9jds/firebase-action@master
+      uses: w9jds/firebase-action@v13.0.1
       with:
           args: deploy --only hosting
       env:

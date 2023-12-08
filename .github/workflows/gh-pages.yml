@@ -23,14 +23,6 @@ jobs:
 
     - name: Build
       run: npm run build:prod
-      
-    - name: deploy to firebase
-      uses: FirebaseExtended/action-hosting-deploy@v0
-      with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ANGULAR_FIRE_DEMO_541C1 }}'
-          channelId: live
-          projectId: angular-fire-demo-541c1
 
     - name: Deploy to GitHub Pages
       if: success()

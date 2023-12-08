@@ -26,7 +26,7 @@ jobs:
     - name: Deploy to Firebase
       if: success()
       run: |
-        npm install firebase-tools
+        npm install -g firebase-tools
         firebase deploy --token $FIREBASE_TOKEN --project angular-fire-demo-541c1
 
     - name: Deploy to GitHub Pages
